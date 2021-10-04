@@ -12,7 +12,10 @@ class API_WEATHER{
   constructor(city){
     // Si la ville n'est pas définit alors la ville par défault est Paris
     if(city === undefined){
-      city = "paris";
+      city = "Paris";
+    }
+    else {
+      city = document.getElementById("city-input").value;
     }
     this.city = city;
   }
@@ -21,7 +24,7 @@ class API_WEATHER{
   // Retourne une promise
   fetchTodayForecast(){
     return axios
-    .get(`${API_URL}?q=${this.city}&units=metric&appid=${API_KEY}`, {
+    .get(`${API_URL}?q=${this.city}&units=metric&cnt=3&appid=${API_KEY}`, {
       crossdomain: true
     })
   }

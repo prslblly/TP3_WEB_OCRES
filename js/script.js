@@ -32,7 +32,7 @@ function start() {
     });
 }
 
-function recherche() {
+function actual() {
   var city = document.getElementById("city-input").value;
   start(city);
 }
