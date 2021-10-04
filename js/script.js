@@ -2,7 +2,8 @@
 // Fonction appelée lors du click du bouton
 function start() {
   // Création de l'objet apiWeather
-  const apiWeather = new API_WEATHER();
+  const city = document.getElementById("city-input").value;
+  const apiWeather = new API_WEATHER(city);
   // Appel de la fonction fetchTodayForecast
 
   apiWeather
@@ -16,6 +17,7 @@ function start() {
       const description = data.weather[0].description;
       const temp = data.main.temp;
       const icon = apiWeather.getHTMLElementFromIcon(data.weather[0].icon);
+      const city = apiWeather.city;
 
       // Modifier le DOM
       document.getElementById('today-forecast-main').innerHTML = main;
@@ -28,4 +30,9 @@ function start() {
       // Affiche une erreur
       console.error(error);
     });
+}
+
+function recherche() {
+  var city = document.getElementById("city-input").value;
+  start(city);
 }
